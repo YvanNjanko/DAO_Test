@@ -1,3 +1,5 @@
+import DAO.PackDAO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,8 @@ public class AddMember extends JFrame {
 
         JButton addStandardMember = createStyledButton("Add Standard Member", "./images/new member.png");
         JButton addPremiumMember = createStyledButton("Add Premium Member", "/path/to/pack.png");
+        JButton backButton = createBackButton();
+        leftPanel.add(backButton);
 
         leftPanel.add(addStandardMember);
         leftPanel.add(addPremiumMember);
@@ -37,6 +41,25 @@ public class AddMember extends JFrame {
         frame.setVisible(true);
     }
 
+    private JButton createBackButton() {
+        JButton backButton = new JButton();
+        ImageIcon backIcon = new ImageIcon("./images/exit.png"); // Remplacez le chemin par le chemin réel de votre image de retour
+        backButton.setIcon(backIcon);
+        backButton.setBorderPainted(false);
+        backButton.setFocusPainted(false);
+        backButton.setContentAreaFilled(false);
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Ajoutez ici le code pour revenir à la page Add_member
+                // Vous pouvez fermer la fenêtre actuelle et ouvrir une nouvelle instance de AddMember
+                // ou utiliser CardLayout pour gérer différentes pages dans le même conteneur, etc.
+            }
+        });
+
+        return backButton;
+    }
     private static JButton createStyledButton(String text, String imagePath) {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
