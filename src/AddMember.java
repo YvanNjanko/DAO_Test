@@ -11,7 +11,7 @@ public class AddMember extends JFrame {
     private static JComboBox<String> sexeComboBox;
 
     public AddMember() {
-        JFrame frame = new JFrame("Dashboard Admin");
+        JFrame frame = new JFrame("Ajouter un membre");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 500);
 
@@ -67,7 +67,7 @@ public class AddMember extends JFrame {
 
     private JButton createBackButton() {
         JButton backButton = new JButton();
-        ImageIcon backIcon = new ImageIcon("./images/exit.png"); // Remplacez le chemin par le chemin réel de votre image de retour
+        ImageIcon backIcon = new ImageIcon("./images/OIP (3).png"); // Remplacez le chemin par le chemin réel de votre image de retour
         backButton.setIcon(backIcon);
         backButton.setBorderPainted(false);
         backButton.setFocusPainted(false);
