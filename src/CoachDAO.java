@@ -1,11 +1,39 @@
-import java.sql.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CoachDAO {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/gym";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
 
+    public static void fillStandardCoachComboBox(JComboBox<String> coachComboBox) {
+        String query = "SELECT nom FROM coach WHERE categorie = ?";
+        fillComboBox(coachComboBox, query, "standard");
+    }
+
+    public static void fillPremiumCoachComboBox(JComboBox<String> coachComboBox) {
+        String query = "SELECT nom FROM coach WHERE categorie = ?";
+        fillComboBox(coachComboBox, query, "premium");
+    }
+
+    private static void fillComboBox(JComboBox<String> comboBox, String query, String categorie) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, categorie);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String coachName = resultSet.getString("nom");
+                comboBox.addItem(coachName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public static void insertCoach(String nom, String prenom, String sexe, String contact, String categorie) {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String query = "INSERT INTO coach(nom, prenom, sexe, contact, categorie) VALUES (?, ?, ?, ?, ?)";

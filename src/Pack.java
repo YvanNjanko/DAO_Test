@@ -38,19 +38,19 @@ public class Pack extends JFrame {
         rightPanel.setLayout(new GridLayout(6, 2));
         rightPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-//        membreButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                setVisible(false);
-//                frame.dispose();
-//                SwingUtilities.invokeLater(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        new AddMember().setVisible(true);
-//                    }
-//                });
-//            }
-//        });
+        membreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                frame.dispose();
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AddMember().setVisible(true);
+                    }
+                });
+            }
+        });
 //
 //        deconnexionButton.addActionListener(new ActionListener() {
 //            @Override
@@ -75,36 +75,36 @@ public class Pack extends JFrame {
                 rightPanel.repaint();
             }
         });
-//
-//        listePackButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                rightPanel.removeAll();
-//                rightPanel.add(PackListDAO.getPackList());
-//                rightPanel.revalidate();
-//                rightPanel.repaint();
-//            }
-//        });
-//
-//        listeMemberButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                rightPanel.removeAll();
-//                rightPanel.add(MemberListDAO.getMemberList());
-//                rightPanel.revalidate();
-//                rightPanel.repaint();
-//            }
-//        });
-//
-//        listeCoachButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                rightPanel.removeAll();
-//                rightPanel.add(CoachListDAO.getCoachList());
-//                rightPanel.revalidate();
-//                rightPanel.repaint();
-//            }
-//        });
+
+        listePackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rightPanel.removeAll();
+                rightPanel.add(PackListDAO.getPackList());
+                rightPanel.revalidate();
+                rightPanel.repaint();
+            }
+        });
+
+        listeMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rightPanel.removeAll();
+                rightPanel.add(MemberListDAO.getMemberList());
+                rightPanel.revalidate();
+                rightPanel.repaint();
+            }
+        });
+
+        listeCoachButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rightPanel.removeAll();
+                rightPanel.add(CoachListDAO.getCoachList());
+                rightPanel.revalidate();
+                rightPanel.repaint();
+            }
+        });
         addCoachButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
