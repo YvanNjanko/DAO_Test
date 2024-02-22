@@ -18,7 +18,7 @@ public class Pack extends JFrame {
 
         JButton membreButton = createStyledButton("New Member", "./images/new member.png");
         JButton packButton = createStyledButton("Add Pack", "/path/to/pack.png");
-        JButton addCoachButton = createStyledButton("Add Coach", "/path/to/pack.png");
+        JButton addCoachButton = createStyledButton("Add Coach", "./images/OIP (4).png");
 
         JButton listePackButton = createStyledButton("Pack List", "./images/list of members.png");
         JButton listeCoachButton = createStyledButton("Coach List", "./images/list of members.png");
