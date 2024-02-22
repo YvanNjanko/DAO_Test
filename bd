@@ -1,0 +1,37 @@
+create database gym;
+
+CREATE TABLE admin (
+    id_admin INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    username VARCHAR(255),
+    password VARCHAR(255)
+);
+
+
+create table pack(
+    id_pack INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nom varchar(255),
+    categorie varchar(255),
+    Description varchar(255),
+    duree varchar(255),
+    prix int
+);
+
+create table coach(
+    id_coach INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nom varchar(255),
+    prenom varchar(255),
+    sexe varchar(255),
+    contact varchar(255),
+    categorie varchar(255)
+);
+
+create table client(
+    id_client INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nom varchar(255),
+    prenom varchar(255),
+    sexe varchar(255),
+    contact varchar(255),
+    pack varchar(255),
+    coach varchar(255),
+    statuPaiement boolean
+);
