@@ -26,16 +26,11 @@ public class AddMember extends JFrame {
         JButton addPaymentButton = createStyledButton("Payement", "/path/to/pack.png");
         JButton backButton = createBackButton();
 
-
-
         addPaymentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cacher la fenêtre actuelle
                 setVisible(false);
                 frame.dispose();
-
-                // Ouvrir une nouvelle instance de la page de paiement
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -45,9 +40,7 @@ public class AddMember extends JFrame {
             }
         });
 
-
         leftPanel.add(backButton);
-
         leftPanel.add(addStandardMember);
         leftPanel.add(addPremiumMember);
         leftPanel.add(addPaymentButton);
@@ -61,13 +54,11 @@ public class AddMember extends JFrame {
 
         frame.add(mainPanel);
         frame.setVisible(true);
-
-
     }
 
     private JButton createBackButton() {
         JButton backButton = new JButton();
-        ImageIcon backIcon = new ImageIcon("./images/OIP (3).png"); // Remplacez le chemin par le chemin réel de votre image de retour
+        ImageIcon backIcon = new ImageIcon("./images/OIP(3).png");
         backButton.setIcon(backIcon);
         backButton.setBorderPainted(false);
         backButton.setFocusPainted(false);
@@ -76,16 +67,11 @@ public class AddMember extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtenez la fenêtre parente de votre composant
                 Container container = SwingUtilities.getAncestorOfClass(JFrame.class, (Component) e.getSource());
 
                 if (container instanceof JFrame) {
                     JFrame frame = (JFrame) container;
-
-                    // Fermez la fenêtre actuelle
                     frame.dispose();
-
-                    // Ouvrez une nouvelle instance de Pack
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
@@ -96,15 +82,11 @@ public class AddMember extends JFrame {
             }
         });
 
-
         return backButton;
     }
 
-
-
     private static JButton createStyledButton(String text, String imagePath) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         button.setForeground(Color.WHITE);
         button.setBackground(new Color(70, 70, 70));
         button.setFocusPainted(false);
@@ -140,7 +122,9 @@ public class AddMember extends JFrame {
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
+            label.setFont(font); // Appliquer la police à l'étiquette
             JTextField textField = new JTextField();
+            textField.setFont(font); // Appliquer la police au champ de texte
             panel.add(label);
             panel.add(textField);
             textFields[i] = textField;
@@ -148,27 +132,34 @@ public class AddMember extends JFrame {
 
         // Liste déroulante pour le sexe
         JLabel sexeLabel = new JLabel("Sexe:");
+        sexeLabel.setFont(font); // Appliquer la police à l'étiquette
         String[] sexeOptions = {"Masculin", "Féminin"};
         sexeComboBox = new JComboBox<>(sexeOptions);
+        sexeComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(sexeLabel);
         panel.add(sexeComboBox);
 
         // Liste déroulante pour les packs
         JLabel packLabel = new JLabel("Pack:");
+        packLabel.setFont(font); // Appliquer la police à l'étiquette
         packComboBox = new JComboBox<>();
         PackDAO.fillStandardPackComboBox(packComboBox);
+        packComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(packLabel);
         panel.add(packComboBox);
 
         // Liste déroulante pour les coachs
         JLabel coachLabel = new JLabel("Coach:");
+        coachLabel.setFont(font); // Appliquer la police à l'étiquette
         coachComboBox = new JComboBox<>();
         CoachDAO.fillStandardCoachComboBox(coachComboBox);
+        coachComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(coachLabel);
         panel.add(coachComboBox);
 
         // Bouton de soumission
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("Add Standard Member");
+        submitButton.setFont(font); // Appliquer la police au bouton
         panel.add(submitButton);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -191,7 +182,9 @@ public class AddMember extends JFrame {
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
+            label.setFont(font); // Appliquer la police à l'étiquette
             JTextField textField = new JTextField();
+            textField.setFont(font); // Appliquer la police au champ de texte
             panel.add(label);
             panel.add(textField);
             textFields[i] = textField;
@@ -199,27 +192,34 @@ public class AddMember extends JFrame {
 
         // Liste déroulante pour le sexe
         JLabel sexeLabel = new JLabel("Sexe:");
+        sexeLabel.setFont(font); // Appliquer la police à l'étiquette
         String[] sexeOptions = {"Masculin", "Féminin"};
         sexeComboBox = new JComboBox<>(sexeOptions);
+        sexeComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(sexeLabel);
         panel.add(sexeComboBox);
 
         // Liste déroulante pour les packs
         JLabel packLabel = new JLabel("Pack:");
+        packLabel.setFont(font); // Appliquer la police à l'étiquette
         packComboBox = new JComboBox<>();
         PackDAO.fillPremiumPackComboBox(packComboBox);
+        packComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(packLabel);
         panel.add(packComboBox);
 
         // Liste déroulante pour les coachs
         JLabel coachLabel = new JLabel("Coach:");
+        coachLabel.setFont(font); // Appliquer la police à l'étiquette
         coachComboBox = new JComboBox<>();
         CoachDAO.fillPremiumCoachComboBox(coachComboBox);
+        coachComboBox.setFont(font); // Appliquer la police à la liste déroulante
         panel.add(coachLabel);
         panel.add(coachComboBox);
 
         // Bouton de soumission
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("Add Premium Member");
+        submitButton.setFont(font); // Appliquer la police au bouton
         panel.add(submitButton);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -235,6 +235,8 @@ public class AddMember extends JFrame {
             }
         });
     }
+
+    private static Font font = new Font("Segoe UI Light", Font.ITALIC|Font.BOLD, 13); // Définition de la police
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
