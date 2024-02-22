@@ -39,6 +39,11 @@ public class Pack extends JFrame {
         rightPanel.setLayout(new GridLayout(6, 2));
         rightPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
+        //creation du panneau droit
+        JPanel ListPanel = new JPanel();
+        ListPanel.setLayout(new GridLayout(1, 2));
+        ListPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         membreButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,6 +75,7 @@ public class Pack extends JFrame {
         packButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ListPanel.removeAll();
                 rightPanel.removeAll();
                 addPackFormFields(rightPanel);
                 rightPanel.revalidate();
@@ -81,15 +87,17 @@ public class Pack extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 rightPanel.removeAll();
-                rightPanel.add(PackListDAO.getPackList());
-                rightPanel.revalidate();
-                rightPanel.repaint();
+                ListPanel.removeAll();
+                ListPanel.add(PackListDAO.getPackList());
+                ListPanel.revalidate();
+                ListPanel.repaint();
             }
         });
 
         listeMemberButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ListPanel.removeAll();
                 rightPanel.removeAll();
                 rightPanel.add(MemberListDAO.getMemberList());
                 rightPanel.revalidate();
@@ -100,6 +108,7 @@ public class Pack extends JFrame {
         listeCoachButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ListPanel.removeAll();
                 rightPanel.removeAll();
                 rightPanel.add(CoachListDAO.getCoachList());
                 rightPanel.revalidate();
@@ -109,6 +118,7 @@ public class Pack extends JFrame {
         addCoachButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ListPanel.removeAll();
                 rightPanel.removeAll();
                 addCoachFormFields(rightPanel);
                 rightPanel.revalidate();
@@ -118,6 +128,7 @@ public class Pack extends JFrame {
 
         mainPanel.add(leftPanel, BorderLayout.WEST);
         mainPanel.add(rightPanel, BorderLayout.CENTER);
+        mainPanel.add(ListPanel, BorderLayout.EAST);
 
         frame.add(mainPanel);
         frame.setVisible(true);
@@ -138,18 +149,23 @@ public class Pack extends JFrame {
     }
 
     private static void addPackFormFields(JPanel panel) {
-        String[] labels = {"Nom du Pack:", "Catégorie:", "Description:", "Durée:", "Prix:"};
+        String[] labels = {"Nom du Pack:", "Catégorie:", "Description:", "Durée (Semaine):", "Prix (FCFA):"};
         JTextField[] textFields = new JTextField[labels.length];
+
+        Font font = new Font("Segoe UI Light",  Font.BOLD | Font.ITALIC, 14); // Définition de la police
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
+            label.setFont(font); // Application de la police au label
             JTextField textField = new JTextField();
+            textField.setFont(font); // Application de la police au champ de texte
             panel.add(label);
             panel.add(textField);
             textFields[i] = textField;
         }
 
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("Add New Pack");
+        submitButton.setFont(font); // Application de la police au bouton
         panel.add(submitButton);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -165,19 +181,24 @@ public class Pack extends JFrame {
         });
     }
 
+
     private static void addCoachFormFields(JPanel panel) {
         String[] labels = {"Nom:", "Prénom:", "Sexe:", "Contact:", "Catégorie:"};
         JTextField[] textFields = new JTextField[labels.length];
 
+        Font font = new Font("Segoe UI Light",  Font.BOLD | Font.ITALIC, 14); // Définition de la police
+
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
+            label.setFont(font); // Application de la police au label
             JTextField textField = new JTextField();
+            textField.setFont(font); // Application de la police au champ de texte
             panel.add(label);
             panel.add(textField);
             textFields[i] = textField;
         }
-
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("Add New Coach");
+        submitButton.setFont(font); // Application de la police au bouton
         panel.add(submitButton);
         submitButton.addActionListener(new ActionListener() {
             @Override

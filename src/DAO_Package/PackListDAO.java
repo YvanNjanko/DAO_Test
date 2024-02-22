@@ -9,9 +9,11 @@ public class PackListDAO {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
 
-    public static JTextArea getPackList() {
+    public static JScrollPane  getPackList() {
         JTextArea packListArea = new JTextArea(20, 40);
         packListArea.setEditable(false);
+        Font font = new Font("Segoe UI Light", Font.ITALIC, 13);
+        packListArea.setFont(font);
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String query = "SELECT * FROM pack";
@@ -37,9 +39,10 @@ public class PackListDAO {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Une erreur s'est produite lors de la récupération des packs : " + ex.getMessage());
         }
+        JScrollPane scrollPane = new JScrollPane(packListArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        return packListArea;
+        return scrollPane;
     }
 
-    // Ajoutez d'autres méthodes DAO pour les opérations liées à la liste des packs si nécessaire
 }
