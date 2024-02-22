@@ -52,19 +52,19 @@ public class Pack extends JFrame {
             }
         });
 //
-//        deconnexionButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                setVisible(false);
-//                frame.dispose();
-//                SwingUtilities.invokeLater(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        new Main().setVisible(true);
-//                    }
-//                });
-//            }
-//        });
+        deconnexionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                frame.dispose();
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new Main().setVisible(true);
+                    }
+                });
+            }
+        });
 //
         packButton.addActionListener(new ActionListener() {
             @Override
