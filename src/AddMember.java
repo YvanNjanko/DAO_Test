@@ -23,11 +23,34 @@ public class AddMember extends JFrame {
 
         JButton addStandardMember = createStyledButton("Add Standard Member", "./images/new member.png");
         JButton addPremiumMember = createStyledButton("Add Premium Member", "/path/to/pack.png");
+        JButton addPaymentButton = createStyledButton("Payement", "/path/to/pack.png");
         JButton backButton = createBackButton();
+
+
+
+        addPaymentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Cacher la fenêtre actuelle
+                setVisible(false);
+                frame.dispose();
+
+                // Ouvrir une nouvelle instance de la page de paiement
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new Payment().setVisible(true);
+                    }
+                });
+            }
+        });
+
+
         leftPanel.add(backButton);
 
         leftPanel.add(addStandardMember);
         leftPanel.add(addPremiumMember);
+        leftPanel.add(addPaymentButton);
 
         rightPanel = new JPanel();
         rightPanel.setLayout(new GridLayout(8, 2));
@@ -38,6 +61,8 @@ public class AddMember extends JFrame {
 
         frame.add(mainPanel);
         frame.setVisible(true);
+
+
     }
 
     private JButton createBackButton() {
@@ -74,6 +99,9 @@ public class AddMember extends JFrame {
 
         return backButton;
     }
+
+
+
     private static JButton createStyledButton(String text, String imagePath) {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
