@@ -18,11 +18,11 @@ public class Main extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
 // Spécifier les dimensions souhaitées pour l'icône
-        int iconWidth = 19; // Largeur de l'icône en pixels
-        int iconHeight = 19; // Hauteur de l'icône en pixels
+        int iconWidth =15; // Largeur de l'icône en pixels
+        int iconHeight = 15; // Hauteur de l'icône en pixels
 
 // Ajouter une image à l'étiquette
-        ImageIcon closeButtonIcon = new ImageIcon("./images/close.png");
+        ImageIcon closeButtonIcon = new ImageIcon("./images/close.png"); // Remplacez le chemin de votre image
         Image image = closeButtonIcon.getImage().getScaledInstance(iconWidth, iconHeight, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(image);
         JLabel closeButtonLabel = new JLabel(scaledIcon);
@@ -31,25 +31,33 @@ public class Main extends JFrame {
         buttonPanel.add(closeButtonLabel);
 
 
+        // Créer un panneau pour contenir l'image et le texte
+        JPanel imageTextPanel = new JPanel(new BorderLayout());
 
-        // Ajouter une image à gauche
+// Ajouter l'image à gauche
         ImageIcon imageIcon = new ImageIcon("./images/OIP (1).jpg");
         Image img = imageIcon.getImage();
-        Image newImg = img.getScaledInstance(370, 300, Image.SCALE_SMOOTH); // Spécifiez la nouvelle taille souhaitée (largeur, hauteur)
+        Image newImg = img.getScaledInstance(540, 340, Image.SCALE_SMOOTH);
         ImageIcon scaledImageIcon = new ImageIcon(newImg);
         JLabel imageLabel = new JLabel(scaledImageIcon);
-        mainPanel.add(imageLabel, BorderLayout.WEST);
+        imageTextPanel.add(imageLabel, BorderLayout.WEST);
+
+// Créer le JLabel avec le texte
+        JLabel aboveImageLabel = new JLabel("Bienvenu dans votre salle de sport");
+        aboveImageLabel.setHorizontalAlignment(SwingConstants.CENTER); // Centrer le texte horizontalement
+
+// Définir les caractéristiques de la police pour le texte
+        aboveImageLabel.setFont(new Font("Segoe UI Light", Font.ITALIC, 40));
+
+// Ajouter le JLabel au panneau contenant l'image et le texte
+        imageTextPanel.add(aboveImageLabel, BorderLayout.NORTH);
+
+// Ajouter le panneau contenant l'image et le texte à gauche
+        mainPanel.add(imageTextPanel, BorderLayout.WEST);
 
 
         // Créer un panneau pour le titre centré et le reste du contenu
         JPanel contentPanel = new JPanel(new GridBagLayout());
-
-        // Créer le titre centré
-        JLabel titleLabel = new JLabel("Bienvenu dans votre salle de sport");
-        titleLabel.setFont(new Font("Segoe UI Light", Font.ITALIC, 40));
-
-        // Ajouter le titre centré au panneau
-        contentPanel.add(titleLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
         // Ajouter les étiquettes et les champs de texte pour l'utilisateur et le mot de passe
         JLabel usernameLabel = new JLabel("USERNAME");
@@ -92,18 +100,12 @@ public class Main extends JFrame {
         // Ajouter le bouton de connexion au panneau
         contentPanel.add(loginButton, new GridBagConstraints(1, 3, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(10, 10, 10, 10), 0, 0));
 
-        // Créer une case à cocher pour afficher le mot de passe
-        JCheckBox showPasswordCheckBox = new JCheckBox("Show Password");
-
-        // Ajouter la case à cocher au panneau
-        contentPanel.add(showPasswordCheckBox, new GridBagConstraints(0, 4, 2, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 
         // Ajouter le panneau du contenu à droite
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         // Ajouter les panneaux principaux à la fenêtre
-        frame.add(mainPanel, BorderLayout.CENTER);
-        frame.add(buttonPanel, BorderLayout.NORTH);
+        frame.add(mainPanel, BorderLayout.WEST);
 
         // Afficher la fenêtre
         frame.setVisible(true);
@@ -117,6 +119,6 @@ public class Main extends JFrame {
         });
     }
 
-    public void setVisible(boolean b) {
-    }
+    public void setVisible(boolean b){
+}
 }
