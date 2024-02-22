@@ -51,11 +51,26 @@ public class AddMember extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ajoutez ici le code pour revenir à la page Add_member
-                // Vous pouvez fermer la fenêtre actuelle et ouvrir une nouvelle instance de AddMember
-                // ou utiliser CardLayout pour gérer différentes pages dans le même conteneur, etc.
+                // Obtenez la fenêtre parente de votre composant
+                Container container = SwingUtilities.getAncestorOfClass(JFrame.class, (Component) e.getSource());
+
+                if (container instanceof JFrame) {
+                    JFrame frame = (JFrame) container;
+
+                    // Fermez la fenêtre actuelle
+                    frame.dispose();
+
+                    // Ouvrez une nouvelle instance de Pack
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            new Pack().setVisible(true);
+                        }
+                    });
+                }
             }
         });
+
 
         return backButton;
     }
