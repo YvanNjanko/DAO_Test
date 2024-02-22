@@ -1142,7 +1142,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     </collation>
     <schema id="324" parent="1" name="gym">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-02-22.14:34:05</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-02-22.15:26:38</LastIntrospectionLocalTimestamp>
       <CollationName>utf8_general_ci</CollationName>
     </schema>
     <schema id="325" parent="1" name="information_schema">
