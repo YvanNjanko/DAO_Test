@@ -17,16 +17,29 @@ public class Main extends JFrame {
         // Ajouter un panneau pour le bouton image en haut à gauche
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        // Ajouter une image au bouton
-        ImageIcon closeButtonIcon = new ImageIcon("./images/close.png"); // Remplacez le chemin de votre image
+// Spécifier les dimensions souhaitées pour l'icône
+        int iconWidth = 19; // Largeur de l'icône en pixels
+        int iconHeight = 19; // Hauteur de l'icône en pixels
 
-        JButton closeButton = new JButton(closeButtonIcon);
-        buttonPanel.add(closeButton);
+// Ajouter une image à l'étiquette
+        ImageIcon closeButtonIcon = new ImageIcon("./images/close.png");
+        Image image = closeButtonIcon.getImage().getScaledInstance(iconWidth, iconHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(image);
+        JLabel closeButtonLabel = new JLabel(scaledIcon);
+
+// Ajouter l'étiquette au panneau
+        buttonPanel.add(closeButtonLabel);
+
+
 
         // Ajouter une image à gauche
-        ImageIcon imageIcon = new ImageIcon("./images/OIP (1).jpg"); // Mettez le chemin de votre image
-        JLabel imageLabel = new JLabel(imageIcon);
+        ImageIcon imageIcon = new ImageIcon("./images/OIP (1).jpg");
+        Image img = imageIcon.getImage();
+        Image newImg = img.getScaledInstance(370, 300, Image.SCALE_SMOOTH); // Spécifiez la nouvelle taille souhaitée (largeur, hauteur)
+        ImageIcon scaledImageIcon = new ImageIcon(newImg);
+        JLabel imageLabel = new JLabel(scaledImageIcon);
         mainPanel.add(imageLabel, BorderLayout.WEST);
+
 
         // Créer un panneau pour le titre centré et le reste du contenu
         JPanel contentPanel = new JPanel(new GridBagLayout());
