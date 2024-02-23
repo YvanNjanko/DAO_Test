@@ -1,11 +1,7 @@
 package DAO_Package;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class CoachDAO {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/gym";
@@ -51,6 +47,21 @@ public class CoachDAO {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Une erreur s'est produite lors de l'ajout du coach : " + ex.getMessage());
         }
+    }
+
+    public static int getNumberOfCoaches() {
+        int numberOfCoaches = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String query = "SELECT COUNT(*) FROM coach";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                numberOfCoaches = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numberOfCoaches;
     }
 
     // Ajoutez d'autres méthodes DAO pour les opérations liées aux coachs si nécessaire

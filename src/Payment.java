@@ -9,6 +9,30 @@ class Payment extends JFrame {
     private JFrame frame;
     private static JPanel rightPanel;
 
+    public static void displayStatistics(JPanel rightPanel) {
+        int numberOfCoaches = CoachDAO.getNumberOfCoaches();
+        int numberOfMembers = MemberDAO.getNumberOfMembers();
+        int numberOfPaidClients = ClientDAO.getNumberOfPaidClients();
+        double revenue = ClientDAO.getRevenue();
+
+        Font font = new Font("Segoe UI Light", Font.BOLD | Font.ITALIC, 14);
+
+        JLabel coachLabel = new JLabel("Nombre de Coach: " + numberOfCoaches);
+        coachLabel.setFont(font);
+        JLabel memberLabel = new JLabel("Nombre de membre: " + numberOfMembers);
+        memberLabel.setFont(font);
+        JLabel paidClientsLabel = new JLabel("Nombre de clients ayant validé leur paiement: " + numberOfPaidClients);
+        paidClientsLabel.setFont(font);
+        JLabel revenueLabel = new JLabel("Revenu: " + revenue);
+        revenueLabel.setFont(font);
+
+        rightPanel.add(coachLabel);
+        rightPanel.add(memberLabel);
+        rightPanel.add(paidClientsLabel);
+        rightPanel.add(revenueLabel);
+    }
+
+
     public Payment() {
         JFrame frame = new JFrame("Service de payement");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +90,18 @@ class Payment extends JFrame {
 
         JButton voirstatut = createStyledButton("Voir statut", "/path/to/pack.png");
 
+        voirstatut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rightPanel.removeAll();
+                displayStatistics(rightPanel);
+                rightPanel.revalidate();
+                rightPanel.repaint();
+            }
+        });
+
+
+
         JButton backButton = createBackButton();
         leftPanel.add(backButton);
 
@@ -84,6 +120,7 @@ class Payment extends JFrame {
         frame.add(mainPanel);
         frame.setVisible(true);
     }
+
 
     private JButton createBackButton() {
         JButton backButton = new JButton();
