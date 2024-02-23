@@ -1,9 +1,6 @@
 package DAO_Package;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ClientDAO {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/gym";
@@ -22,5 +19,35 @@ public class ClientDAO {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public static int getNumberOfPaidClients() {
+        int numberOfPaidClients = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String query = "SELECT COUNT(*) FROM client WHERE statuPaiement = true";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                numberOfPaidClients = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numberOfPaidClients;
+    }
+
+    public static double getRevenue() {
+        double revenue = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String query = "SELECT SUM(prix) FROM pack INNER JOIN client ON pack.nom = client.pack WHERE client.statuPaiement = true";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                revenue = resultSet.getDouble(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return revenue;
     }
 }

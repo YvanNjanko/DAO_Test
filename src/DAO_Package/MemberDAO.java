@@ -27,4 +27,23 @@ public class MemberDAO {
             JOptionPane.showMessageDialog(null, "Une erreur s'est produite lors de l'ajout du client : " + e.getMessage());
         }
     }
+
+    public static int getNumberOfMembers() {
+        String url = "jdbc:mysql://localhost:3306/gym";
+        String user = "root";
+        String password = "";
+
+        int numberOfMembers = 0;
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            String query = "SELECT COUNT(*) FROM client";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                numberOfMembers = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numberOfMembers;
+    }
 }
