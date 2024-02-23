@@ -58,7 +58,7 @@ public class AddMember extends JFrame {
 
     private JButton createBackButton() {
         JButton backButton = new JButton();
-        ImageIcon backIcon = new ImageIcon("./images/OIP(3).png");
+        ImageIcon backIcon = new ImageIcon("./images/exit.png");
         backButton.setIcon(backIcon);
         backButton.setBorderPainted(false);
         backButton.setFocusPainted(false);

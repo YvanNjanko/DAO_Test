@@ -10,7 +10,7 @@ class Payment extends JFrame {
     private static JPanel rightPanel;
 
     public Payment() {
-        JFrame frame = new JFrame("Dashboard Admin");
+        JFrame frame = new JFrame("Service de payement");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 500);
 

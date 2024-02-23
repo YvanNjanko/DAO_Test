@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class Main extends JFrame {
     public Main() {
         // Créer une fenêtre pour l'interface
-        JFrame frame = new JFrame("Bienvenue dans votre salle de sport LETT");
+        JFrame frame = new JFrame("Acceuil");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 500); // Ajustez la taille selon vos besoins
 

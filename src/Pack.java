@@ -17,8 +17,8 @@ public class Pack extends JFrame {
         leftPanel.setBackground(new Color(50, 50, 50));
 
         JButton membreButton = createStyledButton("New Member", "./images/new member.png");
-        JButton packButton = createStyledButton("Add Pack", "/path/to/pack.png");
-        JButton addCoachButton = createStyledButton("Add Coach", "./images/OIP (4).png");
+        JButton packButton = createStyledButton("Add Pack", "./images/pack.png");
+        JButton addCoachButton = createStyledButton("Add Coach", "./images/file.jpg");
 
         JButton listePackButton = createStyledButton("Pack List", "./images/list of members.png");
         JButton listeCoachButton = createStyledButton("Coach List", "./images/list of members.png");
